@@ -133,12 +133,19 @@ function git_prompt_config()
     else
       PROMPT_START="$GIT_PROMPT_START"
     fi
-
+    if [ -n "$GIT_ENVIRONMENT" ] ; then
+      # You can set an "environment" variable in your .bash_profile by defining GIT_ENVIRONMENT before sourcing this file.
+      PROMPT_ENVIRONMENT="($GIT_ENVIRONMENT) "
+    else
+      PROMPT_ENVIRONMENT=""
+    fi
     if [[ -z "$GIT_PROMPT_END" ]] ; then
+      # I override how these are set in git-prompt-colors because for some reason that's not being sourced here.
+      PROMPT_END="\n${PROMPT_ENVIRONMENT}${White}${Time12a}${ResetColor}"
       if $_isroot; then
-        PROMPT_END="$GIT_PROMPT_END_ROOT"
+        PROMPT_END="$PROMPT_END # "
       else
-        PROMPT_END="$GIT_PROMPT_END_USER"
+        PROMPT_END="$PROMPT_END $ "
       fi
     else
       PROMPT_END="$GIT_PROMPT_END"

@@ -101,6 +101,7 @@ git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
 
    # GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
    # GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+   # GIT_ENVIRONMENT=...     # uncomment for custom environment string
 
    # as last entry source the gitprompt script
    source ~/.bash-git-prompt/gitprompt.sh
